@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { getRooms } from "../utils/api-communicator";
+import {useNavigate} from 'react-router-dom';
 
 const GamesHome = ({socket}) => {
+
+    const navigate = useNavigate();
 
     const [rooms,setRooms] = useState([]);
 
@@ -25,6 +28,7 @@ const GamesHome = ({socket}) => {
         console.log(room);
         setRooms([...rooms,room]);
         console.log(rooms);
+        return navigate(`/room/${room.roomId}`);
     })
 
     return(
@@ -32,11 +36,11 @@ const GamesHome = ({socket}) => {
             <div>
                 <ul>
                     {rooms.map((room)=>{
-                        return <li key={room.roomId}>{room.roomId}</li>
+                        return <li key={room.roomId}>{room.roomId} 1/2</li>
                     })}
                 </ul>
             </div>
-            <button onClick={CreateGame}>Create Game</button>
+            <button className="pointer-events-auto rounded-md bg-indigo-600 px-3 py-2 text-[0.8125rem] font-semibold leading-5 text-white hover:bg-indigo-500" onClick={CreateGame}>Create Game</button>
             
         </div>
     );
