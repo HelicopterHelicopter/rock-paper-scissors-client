@@ -4,13 +4,16 @@ import viteLogo from '/vite.svg'
 import './App.css';
 import {Route,Routes} from 'react-router-dom';
 import GamesHome from './pages/GamesHome';
+//import { socket } from './socket';
+import { io } from 'socket.io-client';
 
+const socket = io("http://localhost:5000");
 function App() {
 
   return (
     <main>
       <Routes>
-        <Route path='/' element={<GamesHome/>}/>
+        <Route path='/' element={<GamesHome socket={socket}/>}/>
       </Routes>
     </main>
   )
