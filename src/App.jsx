@@ -6,7 +6,7 @@ import { io } from 'socket.io-client';
 import GameRoom from './pages/GameRoom';
 import { usePlayer } from './context/PlayerContext';
 
-const socket = io("http://localhost:5000");
+const socket = io("http://13.127.64.232:5000/");
 function App() {
   const {playerId,Login,Logout} = usePlayer();
   socket.on("playerId",(playerId)=>{
